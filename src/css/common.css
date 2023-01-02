@@ -16,3 +16,29 @@ img {
   display: block;
   max-width: 100%;
 }
+
+#datetime-picker {
+  text-align: center;
+  border: solid #000 3px;
+  border-radius: 10px;
+  padding: 20px 0;
+  margin-right: 40px;
+  font-size: 1.5em;
+}
+
+.timer {
+  display: flex;
+  padding-top: 20px;
+}
+
+.field {
+  font-weight: bold;
+}
+
+.field .value {
+  color: red;
+}
+
+.field:not(:last-child) {
+  margin-right: 40px;
+}

@@ -56,6 +56,7 @@ refs.secs.textContent = `${seconds}`;
 
 
 function addLeadingZero(val) {
+const stringValue = String(val);
 return String(val).padStart(2, '0');
 };
 

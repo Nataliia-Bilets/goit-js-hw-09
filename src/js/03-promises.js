@@ -33,12 +33,12 @@
 	createPromise(i, delay)
 	.then(({ position, delay }) => {
 	Notiflix.Notify.success(
-	`✅ Fulfilled promise ${i} in ${delay}ms`
+	`✅ Fulfilled promise ${position} in ${delay}ms`
 	);
 	})
 	.catch(({ position, delay }) => {
 	Notiflix.Notify.failure(
-	`❌ Rejected promise ${i} in ${delay}ms`
+	`❌ Rejected promise ${position} in ${delay}ms`
 	);
 	});
 	delay += stepVal;

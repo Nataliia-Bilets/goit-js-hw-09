@@ -21,28 +21,23 @@
 		
 	form.addEventListener('submit', submitCreatePromises);
 		
-	function submitCreatePromises(e) {
-	
-	e.preventDefault();
-	
+function submitCreatePromises(e) {
+  e.preventDefault();
+
 	const delayVal =  Number(delay.value);
 	const stepVal = Number(step.value);
 	const amountVal = Number(amount.value);
-	
-	for (let i = 1; i <= amountVal; i++) {
-	createPromise(i, delay)
-	.then(({ position, delay }) => {
-	Notiflix.Notify.success(
-	`✅ Fulfilled promise ${position} in ${delay}ms`
-	);
-	})
-	.catch(({ position, delay }) => {
-	Notiflix.Notify.failure(
-	`❌ Rejected promise ${position} in ${delay}ms`
-	);
-	});
-	delay += stepVal;
-    };
+
+  for (let i = 1; i <= amountVal; i++) {
+    const delayStep = +(delayVal + stepVal * (i - 1));
+    createPromise(i, delayStep).then(onSuccess).catch(onError);
+  };
 };
-	
-	
+
+function onSuccess({ position, delay }) {
+  Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+};
+
+function onError({ position, delay }) {
+  Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+};
